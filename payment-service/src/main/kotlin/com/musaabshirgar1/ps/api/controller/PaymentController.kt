@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/payment")
 class PaymentController @Autowired constructor(
-    private val paymentService: PaymentService
+   private val paymentService: PaymentService
 ) {
 
-    @RequestMapping("/doPayment")
-    fun doPayment(@RequestBody payment: Payment): Payment {
-        return paymentService.doPayment(payment)
-    }
+   @RequestMapping("/doPayment")
+   fun doPayment(@RequestBody payment: Payment): Payment {
+      return paymentService.doPayment(payment)
+   }
 
-    @GetMapping("/{orderId}")
-    fun findPaymentHistoryByOrderId(@PathVariable orderId: Int): Payment {
-        return paymentService.findPaymentHistoryByOrderId(orderId)
-    }
+   @GetMapping("/{orderId}")
+   fun findPaymentHistoryByOrderId(@PathVariable orderId: Int): Payment {
+      return paymentService.findPaymentHistoryByOrderId(orderId)
+   }
 }

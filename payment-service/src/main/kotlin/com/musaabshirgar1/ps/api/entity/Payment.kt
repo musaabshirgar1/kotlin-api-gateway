@@ -14,11 +14,11 @@ import javax.persistence.Table
 @AllArgsConstructor
 @NoArgsConstructor
 data class Payment(
-        @Id
-        @GeneratedValue
-        var paymentId: Int? = null,
-        var paymentStatus: String? = null,
-        var transactionId: String? = null,
-        var orderId: Int? = null,
-        var amount: Double? = null
+   @Id
+   @GeneratedValue
+   var paymentId: Int? = null,
+   var paymentStatus: String? = null,
+   var transactionId: String? = null,
+   var orderId: Int? = null,
+   var amount: Double? = null
 )

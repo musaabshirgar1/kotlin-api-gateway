@@ -9,5 +9,5 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 class HystrixDashboardApplication
 
 fun main(args: Array<String>) {
-	runApplication<HystrixDashboardApplication>(*args)
+   runApplication<HystrixDashboardApplication>(*args)
 }

@@ -1,10 +1,10 @@
-package com.musaabshirgar1.cloudgateway
+package com.musaabshirgar1.cloudconfigserver
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class CloudGatewayApplicationTests {
+class CloudConfigServerApplicationTests {
 
    @Test
    fun contextLoads() {

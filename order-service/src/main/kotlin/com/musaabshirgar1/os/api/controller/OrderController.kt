@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/order")
 class OrderController @Autowired constructor(
-    private val orderService: OrderService
+   private val orderService: OrderService
 ) {
-    @RequestMapping("/bookOrder")
-    fun bookOrder(
-        @RequestBody transactionRequest: TransactionRequest
-    ): TransactionResponse? {
-        return orderService.saveOrder(transactionRequest)
-    }
+   @RequestMapping("/bookOrder")
+   fun bookOrder(
+      @RequestBody transactionRequest: TransactionRequest
+   ): TransactionResponse? {
+      return orderService.saveOrder(transactionRequest)
+   }
 }
