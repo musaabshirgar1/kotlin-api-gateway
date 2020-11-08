@@ -4,8 +4,7 @@ spring:
   cloud:
     config:
       server:
-        uri: file:///${user.home}/kotlin-api-gateway
-        search-paths: configuration-repo
+        uri: file:///${user.home}/kotlin-api-gateway/configuration-repo
 
 server:
   port: 9196
