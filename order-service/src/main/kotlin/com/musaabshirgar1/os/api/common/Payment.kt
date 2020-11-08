@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 data class Payment(
-        var paymentId: Int? = null,
-        var paymentStatus: String? = null,
-        var transactionId: String? = null,
-        var orderId: Int? = null,
-        var amount: Double? = null
+   var paymentId: Int? = null,
+   var paymentStatus: String? = null,
+   var transactionId: String? = null,
+   var orderId: Int? = null,
+   var amount: Double? = null
 )

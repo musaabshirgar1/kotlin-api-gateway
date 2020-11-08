@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 data class TransactionResponse(
-    var order: Order? = null,
-    var amount: Double? = null,
-    var transactionId: String? = null,
-    var response: String? = null
+   var order: Order? = null,
+   var amount: Double? = null,
+   var transactionId: String? = null,
+   var response: String? = null
 )

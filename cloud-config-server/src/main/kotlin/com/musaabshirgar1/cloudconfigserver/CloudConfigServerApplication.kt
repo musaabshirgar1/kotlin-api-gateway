@@ -1,15 +1,15 @@
-package com.musaabshirgar1.cloudgateway
+package com.musaabshirgar1.cloudconfigserver
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.cloud.config.server.EnableConfigServer
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient
-import org.springframework.cloud.netflix.hystrix.EnableHystrix
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableHystrix
-class CloudGatewayApplication
+@EnableConfigServer
+class CloudConfigServerApplication
 
 fun main(args: Array<String>) {
-   runApplication<CloudGatewayApplication>(*args)
+   runApplication<CloudConfigServerApplication>(*args)
 }

@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 data class TransactionRequest(
-    var order: Order? = null,
-    var payment: Payment? = null
+   var order: Order? = null,
+   var payment: Payment? = null
 )
