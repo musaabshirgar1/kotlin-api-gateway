@@ -8,18 +8,18 @@ import java.util.*
 
 @Service
 class PaymentService @Autowired constructor(
-    private val paymentRepository: PaymentRepository
+   private val paymentRepository: PaymentRepository
 ) {
 
-    fun doPayment(payment: Payment): Payment {
-        payment.paymentStatus = paymentProcessing()
-        payment.transactionId = UUID.randomUUID().toString()
-        return paymentRepository.save(payment)
-    }
+   fun doPayment(payment: Payment): Payment {
+      payment.paymentStatus = paymentProcessing()
+      payment.transactionId = UUID.randomUUID().toString()
+      return paymentRepository.save(payment)
+   }
 
-    fun paymentProcessing(): String = if (Random().nextBoolean()) "Success" else "Failure"
+   fun paymentProcessing(): String = if (Random().nextBoolean()) "Success" else "Failure"
 
-    fun findPaymentHistoryByOrderId(orderId: Int): Payment {
-            return paymentRepository.findByOrderId(orderId)
-    }
+   fun findPaymentHistoryByOrderId(orderId: Int): Payment {
+      return paymentRepository.findByOrderId(orderId)
+   }
 }

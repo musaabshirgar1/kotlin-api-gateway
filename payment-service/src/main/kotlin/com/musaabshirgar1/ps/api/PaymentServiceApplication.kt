@@ -9,5 +9,5 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 class PaymentServiceApplication
 
 fun main(args: Array<String>) {
-	runApplication<PaymentServiceApplication>(*args)
+   runApplication<PaymentServiceApplication>(*args)
 }
