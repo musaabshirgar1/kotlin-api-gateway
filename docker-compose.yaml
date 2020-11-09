@@ -1,0 +1,83 @@
+version: '3'
+services:
+
+  eureka:
+    image: eureka-service-registry
+    ports:
+      - "8761:8761"
+    expose:
+      - 8761
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "localhost:8761/actuator/health 2>&1 | grep UP || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  config:
+    image: cloud-config-server
+    ports:
+      - "9196:9196"
+    depends_on:
+      - eureka
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "localhost:9196/actuator/health 2>&1 | grep UP || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  gateway:
+    restart: on-failure
+    image: cloud-gateway
+    ports:
+      - "8989:8989"
+    depends_on:
+      - eureka
+      - config
+    environment:
+      SERVER_PORT: 8989
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+#      SPRING_CLOUD_CONFIG_URI: http://localhost:9196
+
+  hystrix-dashboard:
+    restart: on-failure
+    image: hystrix-dashboard
+    depends_on:
+      - eureka
+      - config
+      - gateway
+#    environment:
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+
+  order-service:
+    restart: on-failure
+    image: order-service
+    ports:
+      - "9192:9192"
+    depends_on:
+      - eureka
+      - config
+      - hystrix-dashboard
+      - gateway
+    environment:
+      SERVER_PORT: 9192
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+#      SPRING_CLOUD_CONFIG_URI: http://localhost:9196
+
+
+  payment-service:
+    restart: on-failure
+    image: payment-service
+    ports:
+      - "9191:9191"
+    depends_on:
+      - eureka
+      - config
+      - hystrix-dashboard
+      - gateway
+      - order-service
+    environment:
+      SERVER_PORT: 9191
+#      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka:8761/eureka/
+#      SPRING_CLOUD_CONFIG_URI: http://localhost:9196
